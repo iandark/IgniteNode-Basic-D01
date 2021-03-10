@@ -38,18 +38,6 @@ function checksExistsTodo(request, response, next) {
     next();
 }
 
-function validateDate(request, response, next) {
-    const { deadline } = request.body;
-    const dateReg = /^\d{4}-\d{2}-\d{2}$/;
-    const validDate = Array.isArray(deadline.match(dateReg));
-
-    if(!validDate) {
-        return response.status(404).json({ error: "Invalid date"});
-    }
-
-    next();
-}
-
 app.post('/users', (request, response) => {
     const { name, username } = request.body;
 
